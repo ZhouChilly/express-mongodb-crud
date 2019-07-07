@@ -21,11 +21,7 @@ router.post('/', (req, res) => {
 
 const insertRecord = (req, res) => {
   const { fullName, email, mobile, city } = req.body
-  const employee = new Employee()
-  employee.fullName = fullName
-  employee.email = email
-  employee.mobile = mobile
-  employee.city = city
+  const employee = new Employee({ fullName, email, mobile, city })
   employee.save((err) => {
     if (!err) {
       res.redirect('/employee/list')
